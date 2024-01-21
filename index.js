@@ -4,7 +4,12 @@ initialButton.addEventListener("click", getWord);
 
 function getWord() {
   let apiUrl = "https://random-word-api.herokuapp.com/word";
-  axios.get(apiUrl).then(displayWord).then(searchGif);
+  axios
+    .get(apiUrl)
+    .then(displayWord)
+    .catch(console.log("sorry, we didn't find a word"))
+    .then(searchGif)
+    .catch(console.log("sorry, this request failed"));
 }
 
 function displayWord(response) {
